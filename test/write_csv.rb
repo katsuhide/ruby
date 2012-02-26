@@ -5,9 +5,17 @@ a = ["1", "ABC", "abc"]
 b = ["2", "DEF", "def"]
 c = ["3", "GHI", "あああ"]
 x = [a, b, c]
-x = [a]
 
-CSV::Writer.generate("hoge.csv") do |writer|
+
+CSV.generate("test2.csv"){|writer|
+    str = []
+    str.push a[0]
+    str.push(a[2]) 
+    writer << str 
+    writer << b
+    writer << c
+}
+=begin
     x.each{|row|
         puts row
         puts "---------"
@@ -17,6 +25,7 @@ CSV::Writer.generate("hoge.csv") do |writer|
         writer << str
     }
 end
+=end
 =begin
 CSV.generate("test2.csv"){|writer|
     x.each{|row|
